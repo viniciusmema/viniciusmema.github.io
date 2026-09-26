@@ -249,8 +249,8 @@
     const menu = document.querySelector(".menu");
     const langToggle = document.querySelector(".lang-toggle");
     const themeToggle = document.querySelector(".theme-toggle");
-    menu.addEventListener("click", () => nav.classList.toggle("open"));
-    nav.querySelectorAll("a").forEach(link => link.addEventListener("click", () => nav.classList.remove("open")));
+    menu.addEventListener("click", () => { const isOpen = nav.classList.toggle("open"); menu.setAttribute("aria-expanded", String(isOpen)); });
+    nav.querySelectorAll("a").forEach(link => link.addEventListener("click", () => { nav.classList.remove("open"); menu.setAttribute("aria-expanded", "false"); }));
 
     const copy = {
       pt: {
@@ -320,7 +320,9 @@
         footer: "Design · Technology · Development"
       }
     };
-    let lang = localStorage.getItem("vm-language") || "pt";
+    const browserLanguage = (navigator.language || "pt-BR").toLowerCase();
+    const detectedLanguage = browserLanguage.startsWith("pt") ? "pt" : "en";
+    let lang = localStorage.getItem("vm-language") || detectedLanguage;
     const savedTheme = localStorage.getItem("vm-theme");
     const systemTheme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
     let theme = savedTheme || systemTheme;
@@ -340,7 +342,7 @@
       setText("#contato .eyebrow", t.contactEyebrow); setText("#contato h2", t.contactTitle); setText("#contato .contact-note", t.contactNote); setText("#contato .cta", t.contactCta + " ↗"); setText("footer span:last-child", t.footer);
       langToggle.textContent = lang === "pt" ? "PT" : "EN"; localStorage.setItem("vm-language", lang);
     }
-    langToggle.addEventListener("click", () => { lang = lang === "pt" ? "en" : "pt"; applyLanguage(); });
+    langToggle.addEventListener("click", () => { lang = lang === "pt" ? "en" : "pt"; applyLanguage(); nav.classList.remove("open"); menu.setAttribute("aria-expanded", "false"); });
     themeToggle.addEventListener("click", () => { theme = theme === "dark" ? "light" : "dark"; applyTheme(); });
     applyTheme();
     applyLanguage();
