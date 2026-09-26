@@ -33,6 +33,7 @@
     .links a:hover, .socials a:hover { color: var(--ink); }
     .socials { display: flex; gap: 6px; color: var(--muted); font-size: 11px; font-weight: 800; }
     .socials a { padding: 6px 7px; border: 1px solid var(--line); border-radius: 999px; }
+    .lang-toggle { border: 1px solid var(--line); background: transparent; color: var(--muted); border-radius: 999px; padding: 6px 9px; font-size: 11px; font-weight: 800; cursor: pointer; }
     .menu { display: none; border: 0; background: transparent; font-size: 24px; }
     .hero { display: grid; grid-template-columns: 1.08fr .92fr; gap: 54px; align-items: end; padding: 92px 0 120px; animation: fadeUp .8s ease both; }
     .eyebrow { color: var(--accent-dark); font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
@@ -108,7 +109,7 @@
         <a href="#processo">Processo</a>
         <a href="#contato">Contato</a>
       </div>
-      <div class="socials"><a href="https://instagram.com/viniciusmema" aria-label="Instagram">IG</a><a href="https://www.linkedin.com/in/viniciusmema" aria-label="LinkedIn">LI</a><a href="https://www.youtube.com/@viniciusmema" aria-label="YouTube">YT</a><a href="https://twitch.tv/vinimema" aria-label="Twitch">TW</a><a href="https://www.reddit.com/user/oviniciusmendes" aria-label="Reddit">RD</a></div><button class="menu" aria-label="Abrir menu">☰</button>
+      <div class="socials"><a href="https://instagram.com/viniciusmema" aria-label="Instagram">IG</a><a href="https://www.linkedin.com/in/viniciusmema" aria-label="LinkedIn">LI</a><a href="https://www.youtube.com/@viniciusmema" aria-label="YouTube">YT</a><a href="https://twitch.tv/vinimema" aria-label="Twitch">TW</a><a href="https://www.reddit.com/user/oviniciusmendes" aria-label="Reddit">RD</a></div><button class="lang-toggle" type="button" aria-label="Trocar idioma">EN</button><button class="menu" aria-label="Abrir menu">☰</button>
     </nav>
   </header>
 
@@ -215,8 +216,96 @@
 <script>
     const nav = document.querySelector(".nav");
     const menu = document.querySelector(".menu");
+    const langToggle = document.querySelector(".lang-toggle");
     menu.addEventListener("click", () => nav.classList.toggle("open"));
     nav.querySelectorAll("a").forEach(link => link.addEventListener("click", () => nav.classList.remove("open")));
+
+    const copy = {
+      pt: {
+        nav: ["Projetos","Sobre","Áreas","Processo","Contato"],
+        heroEyebrow: "Creative technologist · designer digital · São Paulo, Brasil",
+        heroTitle: "Ideias que viram produtos.",
+        heroCopy: "Sou Vinicius Mendes Maia. Uno design, tecnologia e desenvolvimento para transformar conceitos em experiências digitais reais — do impresso ao produto digital.",
+        heroCta: "Ver projetos",
+        projectsTitle: "Projetos selecionados",
+        projectsIntro: "Produtos e experiências construídos do zero, da ideia à implementação.",
+        projects: [
+          ["01 / produto próprio","Oficina de Roteiros","Uma experiência mais organizada e visual para escrever, estruturar e gerenciar projetos criativos."],
+          ["02 / plataforma","Ide Scriptum","Estudo bíblico, leitura, devocionais e organização reunidos em uma experiência centralizada."],
+          ["03 / e-commerce","Casa Serenum","Uma experiência de marca para casa, cama, mesa, banho e decoração."],
+          ["04 / institucional","Amar Transforma","Presença digital e comunicação para uma comunidade em movimento."]
+        ],
+        areasTitle: "Campos de criação",
+        areasIntro: "Um portfólio em expansão, conectado por uma mesma forma de pensar e construir.",
+        areas: [
+          ["01 — Visual design","Identidade, direção de arte, composição e sistemas visuais com personalidade."],
+          ["02 — Editorial & print","Editoração, materiais impressos e peças que precisam funcionar no mundo físico."],
+          ["03 — Digital products","UX/UI, prototipação e desenvolvimento de produtos digitais funcionais."],
+          ["04 — Experiments","Personagens, itens para Roblox, protótipos e novas ferramentas em exploração."]
+        ],
+        aboutLead: "Eu penso em sistemas, desenho experiências e construo coisas que precisam existir.",
+        about: ["Tenho background em design e publicidade. Meu trabalho combina direção visual, UX/UI, prototipação e desenvolvimento para criar produtos digitais funcionais e com personalidade.","Uso código e inteligência artificial como ferramentas de exploração, construção e aprendizado contínuo."],
+        processTitle: "Como eu trabalho",
+        processIntro: "Um processo aberto, prático e guiado pelo problema.",
+        process: [["01 — Entender","Investigo o contexto, as pessoas e o problema antes de pensar na solução."],["02 — Projetar","Organizo ideias, requisitos e direção visual para dar forma à experiência."],["03 — Construir","Desenvolvo, testo e evoluo o produto até ele funcionar no mundo real."]],
+        contactEyebrow: "Vamos criar algo?",
+        contactTitle: "Uma boa ideia merece uma experiência à altura.",
+        contactNote: "Open to international collaborations, digital products and creative experiments.",
+        contactCta: "Falar comigo",
+        footer: "Design · Tecnologia · Desenvolvimento"
+      },
+      en: {
+        nav: ["Projects","About","Focus","Process","Contact"],
+        heroEyebrow: "Creative technologist · digital designer · São Paulo, Brazil",
+        heroTitle: "Ideas become products.",
+        heroCopy: "I’m Vinicius Mendes Maia. I combine design, technology and development to turn concepts into real digital experiences — from print to product.",
+        heroCta: "View projects",
+        projectsTitle: "Selected projects",
+        projectsIntro: "Products and experiences built from scratch, from idea to implementation.",
+        projects: [
+          ["01 / own product","Script Workshop","A more organized and visual experience for writing, structuring and managing creative projects."],
+          ["02 / platform","Ide Scriptum","Bible study, reading, devotionals and organization brought together in one central experience."],
+          ["03 / e-commerce","Casa Serenum","A brand experience for home, bed, bath and decoration."],
+          ["04 / institutional","Amar Transforma","Digital presence and communication for a community in motion."]
+        ],
+        areasTitle: "Creative fields",
+        areasIntro: "An expanding portfolio connected by the same way of thinking and building.",
+        areas: [
+          ["01 — Visual design","Identity, art direction, composition and visual systems with personality."],
+          ["02 — Editorial & print","Editorial design, printed materials and pieces made for the physical world."],
+          ["03 — Digital products","UX/UI, prototyping and development of functional digital products."],
+          ["04 — Experiments","Characters, Roblox items, prototypes and new tools in exploration."]
+        ],
+        aboutLead: "I think in systems, design experiences and build things that need to exist.",
+        about: ["With a background in design and advertising, I combine visual direction, UX/UI, prototyping and development to create functional digital products with personality.","I use code and artificial intelligence as tools for exploration, building and continuous learning."],
+        processTitle: "How I work",
+        processIntro: "An open, practical process guided by the problem.",
+        process: [["01 — Understand","I investigate the context, the people and the problem before thinking about a solution."],["02 — Design","I organize ideas, requirements and visual direction to shape the experience."],["03 — Build","I develop, test and evolve the product until it works in the real world."]],
+        contactEyebrow: "Let’s create something?",
+        contactTitle: "A good idea deserves an experience to match.",
+        contactNote: "Open to international collaborations, digital products and creative experiments.",
+        contactCta: "Get in touch",
+        footer: "Design · Technology · Development"
+      }
+    };
+    let lang = localStorage.getItem("vm-language") || "pt";
+    function setText(selector, value) { const el = document.querySelector(selector); if (el) el.textContent = value; }
+    function applyLanguage() {
+      const t = copy[lang];
+      document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+      document.querySelectorAll(".links a").forEach((el, i) => el.textContent = t.nav[i]);
+      setText(".hero .eyebrow", t.heroEyebrow); setText(".hero h1", t.heroTitle); setText(".hero-copy", t.heroCopy); setText(".hero .cta", t.heroCta + " ↘");
+      setText("#projetos h2", t.projectsTitle); setText("#projetos .section-head p", t.projectsIntro);
+      document.querySelectorAll("#projetos .project").forEach((el, i) => { setText("#projetos .project:nth-child("+(i+1)+") .number", t.projects[i][0]); setText("#projetos .project:nth-child("+(i+1)+") h3", t.projects[i][1]); setText("#projetos .project:nth-child("+(i+1)+") p", t.projects[i][2]); });
+      setText("#areas h2", t.areasTitle); setText("#areas .section-head p", t.areasIntro);
+      document.querySelectorAll("#areas .service").forEach((el, i) => { el.querySelector("strong").textContent=t.areas[i][0]; el.querySelector("p").textContent=t.areas[i][1]; });
+      setText("#sobre > .wrap > p", t.aboutLead); document.querySelectorAll("#sobre aside p").forEach((el,i)=>el.textContent=t.about[i]);
+      setText("#processo h2", t.processTitle); setText("#processo .section-head p", t.processIntro); document.querySelectorAll("#processo .service").forEach((el,i)=>{el.querySelector("strong").textContent=t.process[i][0];el.querySelector("p").textContent=t.process[i][1];});
+      setText("#contato .eyebrow", t.contactEyebrow); setText("#contato h2", t.contactTitle); setText("#contato .contact-note", t.contactNote); setText("#contato .cta", t.contactCta + " ↗"); setText("footer span:last-child", t.footer);
+      langToggle.textContent = lang === "pt" ? "EN" : "PT"; localStorage.setItem("vm-language", lang);
+    }
+    langToggle.addEventListener("click", () => { lang = lang === "pt" ? "en" : "pt"; applyLanguage(); });
+    applyLanguage();
   </script>
 </body>
 </html>
