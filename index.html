@@ -26,7 +26,7 @@
     body::before { content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .3; background-image: linear-gradient(rgba(23,23,23,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(23,23,23,.035) 1px, transparent 1px); background-size: 32px 32px; mask-image: linear-gradient(to bottom, black, transparent 80%); }
     a { color: inherit; text-decoration: none; }
     .wrap { width: min(var(--max), calc(100% - 40px)); margin: auto; }
-    .nav { display: flex; justify-content: space-between; align-items: center; gap: 22px; padding: 16px 18px; margin-top: 14px; position: sticky; top: 14px; z-index: 10; background: rgba(251,250,247,.78); border: 1px solid rgba(217,213,202,.8); border-radius: 999px; backdrop-filter: blur(14px); }
+    .nav { display: flex; justify-content: space-between; align-items: center; gap: 22px; padding: 16px 18px; margin-top: 14px; position: sticky; top: 14px; z-index: 10; background: color-mix(in srgb, var(--paper) 82%, transparent); border: 1px solid var(--line); border-radius: 999px; backdrop-filter: blur(14px); }
      .mark { display: inline-flex; align-items: center; }
     .mark img { display: block; width: 118px; height: auto; object-fit: contain; }
     .mark span { color: var(--accent); }
@@ -42,10 +42,13 @@
     .eyebrow { color: var(--accent-dark); font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
     h1 { margin: 18px 0 24px; max-width: 720px; font-size: clamp(52px, 8vw, 106px); line-height: .91; letter-spacing: -.085em; font-weight: 900; }
     .hero-copy { max-width: 490px; color: var(--muted); font-size: 18px; line-height: 1.55; }
-    .cta { display: inline-flex; align-items: center; gap: 10px; margin-top: 28px; padding: 14px 19px; background: var(--ink); color: white; border-radius: 999px; font-weight: 700; font-size: 14px; }
+    .cta { display: inline-flex; align-items: center; gap: 10px; margin-top: 28px; padding: 14px 19px; background: #102f43; color: #fff; border-radius: 999px; font-weight: 700; font-size: 14px; }
     .cta:hover { background: var(--accent); }
     .stamp { min-height: 350px; padding: 28px; background: var(--ink) url("assets/header-portfolio.jpg") left center/cover no-repeat; box-shadow: 22px 24px 0 rgba(23,23,23,.08); border-radius: 46% 54% 51% 49% / 48% 42% 58% 52%; display: flex; flex-direction: column; justify-content: space-between; transform: rotate(3deg); }
     .stamp img { width: 78px; height: 78px; object-fit: cover; object-position: center; border-radius: 50%; border: 4px solid var(--paper); }
+    [data-theme="dark"] .cta { background: var(--accent); color: #102f43; }
+    [data-theme="dark"] .project:nth-child(1) { background: #0f2d3c; color: #fff; }
+    [data-theme="dark"] .project:nth-child(4) { background: #7a5a2d; color: #fff; }
     .stamp p { max-width: 240px; margin: 0; padding: 10px 12px; border-radius: 14px; background: rgba(255,255,255,.88); color: var(--ink); font-size: 30px; line-height: .98; letter-spacing: -.06em; font-weight: 800; }
     .stamp small { align-self: flex-start; padding: 7px 10px; border-radius: 999px; background: var(--accent); color: var(--ink); font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
     section { padding: 90px 0; border-top: 1px solid var(--line); animation: fadeUp .8s ease both; }
@@ -99,8 +102,9 @@
       footer { display: block; }
       footer span { display: block; margin-top: 8px; }
     }
-      .project-logo-pair { display:flex; align-items:center; min-height:72px; margin-bottom:10px; }
-    .project-logo { max-width:180px; max-height:62px; width:auto; object-fit:contain; object-position:left center; }
+      .project-logo-pair { display:flex; align-items:center; min-height:88px; margin-bottom:14px; overflow:visible; }
+    .project-logo-pair .project-logo { transform: scale(1.8); transform-origin: left center; }
+    .project-logo { width:220px; height:82px; object-fit:cover; object-position:center; }
     .logo-dark { display:none; }
     [data-theme="dark"] .logo-light { display:none; }
     [data-theme="dark"] .logo-dark { display:block; }
