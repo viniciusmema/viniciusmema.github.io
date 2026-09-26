@@ -30,6 +30,8 @@
      .mark { display: inline-flex; align-items: center; }
     .mark img { display: block; width: 118px; height: auto; object-fit: contain; }
     .mark span { color: var(--accent); }
+    [data-theme="dark"] .mark img { filter: brightness(0) invert(1); }
+    [data-theme="dark"] .socials img { filter: grayscale(1) brightness(0) invert(1); }
     .links { display: flex; gap: 22px; color: var(--muted); font-size: 13px; font-weight: 600; }
     .links a:hover, .socials a:hover { color: var(--ink); }
     .socials { display: flex; gap: 6px; color: var(--muted); font-size: 11px; font-weight: 800; }
@@ -49,6 +51,8 @@
     [data-theme="dark"] .cta { background: var(--accent); color: #102f43; }
     [data-theme="dark"] .project:nth-child(1) { background: #0f2d3c; color: #fff; }
     [data-theme="dark"] .project:nth-child(4) { background: #7a5a2d; color: #fff; }
+    [data-theme="dark"] .stamp { background-color: #0b2434; background-blend-mode: multiply; }
+    [data-theme="dark"] .stamp p { background: rgba(11,36,52,.9); color: #fff; }
     .stamp p { max-width: 240px; margin: 0; padding: 10px 12px; border-radius: 14px; background: rgba(255,255,255,.88); color: var(--ink); font-size: 30px; line-height: .98; letter-spacing: -.06em; font-weight: 800; }
     .stamp small { align-self: flex-start; padding: 7px 10px; border-radius: 999px; background: var(--accent); color: var(--ink); font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
     section { padding: 90px 0; border-top: 1px solid var(--line); animation: fadeUp .8s ease both; }
