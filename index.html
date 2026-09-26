@@ -68,6 +68,7 @@
     .project:nth-child(3) { background: var(--blue); }
     .project:nth-child(4) { background: #f1d8a9; color: #102f43; }
     .project:nth-child(3) { color: #102f43; }
+    .project:nth-child(3) p, .project:nth-child(4) p { color: #102f43; opacity: .88; }
     .project .number { font-size: 13px; opacity: .65; }
     .project h3 { max-width: 440px; margin: 16px 0 12px; font-size: clamp(30px, 4vw, 52px); line-height: .95; letter-spacing: -.07em; }
     .project p { max-width: 440px; margin: 0; color: inherit; opacity: .72; line-height: 1.5; }
@@ -92,8 +93,8 @@
       .wrap { width: min(100% - 28px, var(--max)); }
       .links, .socials { display: none; }
       .nav.open { border-radius: 20px; flex-wrap: wrap; }
-      .nav.open .links { display: flex; flex-basis: 100%; order: 4; flex-direction: column; gap: 12px; padding-top: 10px; }
-      .nav.open .socials { display: flex; margin-left: auto; }
+      .nav.open .links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); flex-basis: 100%; order: 4; gap: 10px 16px; padding-top: 12px; border-top: 1px solid var(--line); }
+      .nav.open .socials { display: flex; flex-basis: 100%; justify-content: flex-start; margin-left: 0; padding-top: 4px; }
       .nav { top: 8px; margin-top: 8px; }
       .menu { display: block; }
       .hero, .about, .contact { grid-template-columns: 1fr; }
