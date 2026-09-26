@@ -28,14 +28,14 @@
     .wrap { width: min(var(--max), calc(100% - 40px)); margin: auto; }
     .nav { display: flex; justify-content: space-between; align-items: center; gap: 22px; padding: 16px 18px; margin-top: 14px; position: sticky; top: 14px; z-index: 10; background: color-mix(in srgb, var(--paper) 82%, transparent); border: 1px solid var(--line); border-radius: 999px; backdrop-filter: blur(14px); }
      .mark { display: inline-flex; align-items: center; }
-    .mark img { display: block; width: 118px; height: auto; object-fit: contain; }
+    .mark img { display: block; width: 92px; height: auto; object-fit: contain; }
     .mark span { color: var(--accent); }
     
     [data-theme="dark"] .socials img { filter: grayscale(1) brightness(0) invert(1); }
     .links { display: flex; gap: 22px; color: var(--muted); font-size: 13px; font-weight: 600; }
     .links a:hover, .socials a:hover { color: var(--ink); }
     .socials { display: flex; gap: 6px; color: var(--muted); font-size: 11px; font-weight: 800; }
-    .socials a { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border: 1px solid var(--line); border-radius: 999px; }
+    .socials a { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border: 1px solid var(--line); border-radius: 999px; }
     .socials img { width: 14px; height: 14px; display: block; }
     .theme-toggle, .lang-toggle { border: 1px solid var(--line); background: transparent; color: var(--muted); border-radius: 999px; padding: 6px 9px; font-size: 11px; font-weight: 800; cursor: pointer; }
     .theme-toggle { width: 30px; height: 30px; padding: 0; font-size: 15px; cursor: pointer; }
@@ -94,11 +94,11 @@
     @media (max-width: 760px) {
       .wrap { width: min(100% - 28px, var(--max)); }
       .links { display: none; }
-      .socials { display: flex; flex-basis: 100%; order: 5; justify-content: center; padding-top: 10px; margin-top: 4px; border-top: 1px solid var(--line); }
+      .socials { display: flex; flex-basis: auto; order: 0; justify-content: flex-end; gap: 3px; padding-top: 0; margin-top: 0; border-top: 0; margin-left: auto; }
       .nav.open { border-radius: 20px; flex-wrap: wrap; }
       .nav.open .links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); flex-basis: 100%; order: 4; gap: 10px 16px; padding-top: 12px; border-top: 1px solid var(--line); }
-      .nav.open .socials { display: flex; flex-basis: 100%; justify-content: center; margin-left: 0; padding-top: 10px; }
-      .nav { top: 8px; margin-top: 8px; }
+      .nav.open .socials { display: flex; flex-basis: auto; justify-content: flex-end; margin-left: auto; padding-top: 0; }
+      .nav { top: 8px; margin-top: 8px; padding: 10px 12px; gap: 8px; flex-wrap: nowrap; }
       .menu { display: block; }
       .hero, .about, .contact { grid-template-columns: 1fr; }
       .hero { gap: 35px; padding: 55px 0 75px; }
