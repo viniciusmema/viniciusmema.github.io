@@ -99,6 +99,10 @@
       .nav.open .links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); flex-basis: 100%; order: 4; gap: 10px 16px; padding-top: 12px; border-top: 1px solid var(--line); }
       .nav.open .socials { display: flex; flex-basis: auto; justify-content: flex-end; margin-left: auto; padding-top: 0; }
       .nav { top: 8px; margin-top: 8px; padding: 10px 12px; gap: 8px; flex-wrap: nowrap; }
+      @media (max-width: 520px) {
+        .nav { flex-wrap: wrap; }
+        .socials { flex-basis: 100%; justify-content: center; order: 5; padding-top: 8px; border-top: 1px solid var(--line); }
+      }
       .menu { display: block; }
       .hero, .about, .contact { grid-template-columns: 1fr; }
       .hero { gap: 35px; padding: 55px 0 75px; }
