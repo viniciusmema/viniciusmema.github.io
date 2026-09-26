@@ -93,10 +93,11 @@
     footer { display: flex; justify-content: space-between; gap: 20px; padding: 26px 0 35px; color: var(--muted); font-size: 13px; }
     @media (max-width: 760px) {
       .wrap { width: min(100% - 28px, var(--max)); }
-      .links, .socials { display: none; }
+      .links { display: none; }
+      .socials { display: flex; flex-basis: 100%; order: 5; justify-content: center; padding-top: 10px; margin-top: 4px; border-top: 1px solid var(--line); }
       .nav.open { border-radius: 20px; flex-wrap: wrap; }
       .nav.open .links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); flex-basis: 100%; order: 4; gap: 10px 16px; padding-top: 12px; border-top: 1px solid var(--line); }
-      .nav.open .socials { display: flex; flex-basis: 100%; justify-content: flex-start; margin-left: 0; padding-top: 4px; }
+      .nav.open .socials { display: flex; flex-basis: 100%; justify-content: center; margin-left: 0; padding-top: 10px; }
       .nav { top: 8px; margin-top: 8px; }
       .menu { display: block; }
       .hero, .about, .contact { grid-template-columns: 1fr; }
