@@ -20,6 +20,7 @@
       --max: 1180px;
     }
     * { box-sizing: border-box; }
+    [data-theme="dark"] { --bg: #0b2434; --paper: #12394d; --ink: #f7f4ea; --muted: #b7c7ce; --line: #2d5668; --accent: #f5c84b; --accent-dark: #58c4c6; --lime: #1c5267; --blue: #28657b; }
     html { scroll-behavior: smooth; }
     body { margin: 0; background: var(--bg); color: var(--ink); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; overflow-x: hidden; }
     body::before { content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .3; background-image: linear-gradient(rgba(23,23,23,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(23,23,23,.035) 1px, transparent 1px); background-size: 32px 32px; mask-image: linear-gradient(to bottom, black, transparent 80%); }
@@ -34,7 +35,8 @@
     .socials { display: flex; gap: 6px; color: var(--muted); font-size: 11px; font-weight: 800; }
     .socials a { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border: 1px solid var(--line); border-radius: 999px; }
     .socials img { width: 14px; height: 14px; display: block; }
-    .lang-toggle { border: 1px solid var(--line); background: transparent; color: var(--muted); border-radius: 999px; padding: 6px 9px; font-size: 11px; font-weight: 800; cursor: pointer; }
+    .theme-toggle, .lang-toggle { border: 1px solid var(--line); background: transparent; color: var(--muted); border-radius: 999px; padding: 6px 9px; font-size: 11px; font-weight: 800; cursor: pointer; }
+    .theme-toggle { width: 30px; height: 30px; padding: 0; font-size: 15px; cursor: pointer; }
     .menu { display: none; border: 0; background: transparent; font-size: 24px; }
     .hero { display: grid; grid-template-columns: 1.08fr .92fr; gap: 54px; align-items: end; padding: 92px 0 120px; animation: fadeUp .8s ease both; }
     .eyebrow { color: var(--accent-dark); font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
@@ -110,7 +112,7 @@
         <a href="#processo">Processo</a>
         <a href="#contato">Contato</a>
       </div>
-      <div class="socials"><a href="https://instagram.com/viniciusmema" aria-label="Instagram"><img src="https://cdn.simpleicons.org/instagram/E4405F" alt="Instagram"></a><a href="https://www.linkedin.com/in/viniciusmema" aria-label="LinkedIn"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/linkedin.svg" alt="LinkedIn"></a><a href="https://www.youtube.com/@viniciusmema" aria-label="YouTube"><img src="https://cdn.simpleicons.org/youtube/FF0000" alt="YouTube"></a><a href="https://twitch.tv/vinimema" aria-label="Twitch"><img src="https://cdn.simpleicons.org/twitch/9146FF" alt="Twitch"></a><a href="https://www.reddit.com/user/oviniciusmendes" aria-label="Reddit"><img src="https://cdn.simpleicons.org/reddit/FF4500" alt="Reddit"></a></div><button class="lang-toggle" type="button" aria-label="Trocar idioma">EN</button><button class="menu" aria-label="Abrir menu">☰</button>
+      <div class="socials"><a href="https://instagram.com/viniciusmema" aria-label="Instagram"><img src="https://cdn.simpleicons.org/instagram/E4405F" alt="Instagram"></a><a href="https://www.linkedin.com/in/viniciusmema" aria-label="LinkedIn"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/linkedin.svg" alt="LinkedIn"></a><a href="https://www.youtube.com/@viniciusmema" aria-label="YouTube"><img src="https://cdn.simpleicons.org/youtube/FF0000" alt="YouTube"></a><a href="https://twitch.tv/vinimema" aria-label="Twitch"><img src="https://cdn.simpleicons.org/twitch/9146FF" alt="Twitch"></a><a href="https://www.reddit.com/user/oviniciusmendes" aria-label="Reddit"><img src="https://cdn.simpleicons.org/reddit/FF4500" alt="Reddit"></a></div><button class="theme-toggle" type="button" aria-label="Alternar tema">☾</button><button class="lang-toggle" type="button" aria-label="Trocar idioma">PT</button><button class="menu" aria-label="Abrir menu">☰</button>
     </nav>
   </header>
 
@@ -218,6 +220,7 @@
     const nav = document.querySelector(".nav");
     const menu = document.querySelector(".menu");
     const langToggle = document.querySelector(".lang-toggle");
+    const themeToggle = document.querySelector(".theme-toggle");
     menu.addEventListener("click", () => nav.classList.toggle("open"));
     nav.querySelectorAll("a").forEach(link => link.addEventListener("click", () => nav.classList.remove("open")));
 
@@ -290,6 +293,8 @@
       }
     };
     let lang = localStorage.getItem("vm-language") || "pt";
+    let theme = localStorage.getItem("vm-theme") || "light";
+    function applyTheme() { document.documentElement.dataset.theme = theme === "dark" ? "dark" : "light"; themeToggle.textContent = theme === "dark" ? "☀" : "☾"; themeToggle.setAttribute("aria-label", theme === "dark" ? "Usar tema claro" : "Usar tema escuro"); localStorage.setItem("vm-theme", theme); }
     function setText(selector, value) { const el = document.querySelector(selector); if (el) el.textContent = value; }
     function applyLanguage() {
       const t = copy[lang];
