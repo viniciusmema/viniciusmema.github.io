@@ -89,6 +89,13 @@
     .service { padding: 25px; border: 1px solid var(--line); border-radius: var(--radius); min-height: 200px; background: var(--paper); }
     .service strong { display: block; margin-bottom: 55px; font-size: 19px; letter-spacing: -.03em; }
     .service p { color: var(--muted); line-height: 1.45; margin: 0; font-size: 14px; }
+    .editorial-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .editorial-card { overflow:hidden; border:1px solid var(--line); border-radius:var(--radius); background:var(--paper); }
+    .editorial-card img { display:block; width:100%; aspect-ratio: .707; object-fit:cover; object-position:top center; }
+    .editorial-card div { padding:16px; }
+    .editorial-card strong { display:block; margin-bottom:8px; }
+    .editorial-card span { color:var(--muted); font-size:12px; }
+    @media (max-width:760px){ .editorial-grid { grid-template-columns:repeat(2,1fr); } }
     .stack { display: flex; flex-wrap: wrap; gap: 9px; }
     .tag { padding: 10px 14px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 13px; }
     .contact { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 30px; }
@@ -201,6 +208,23 @@
       </div>
     </section>
 
+
+    <section id="editorial">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Editorial &amp; Print</h2>
+          <p>Capas, sistemas editoriais e publicações desenvolvidas do conceito à editoração.</p>
+        </div>
+        <div class="editorial-grid">
+          <article class="editorial-card"><img src="assets/editorial-1.png" alt="A História do Cristianismo"><div><strong>A História do Cristianismo</strong><span>Direção visual · Editoração</span></div></article>
+          <article class="editorial-card"><img src="assets/editorial-2.png" alt="A História do Cristianismo"><div><strong>A História do Cristianismo</strong><span>Projeto editorial</span></div></article>
+          <article class="editorial-card"><img src="assets/editorial-3.png" alt="Panorama Bíblico Antigo Testamento"><div><strong>Panorama Bíblico — Antigo Testamento</strong><span>Identidade editorial · Diagramação</span></div></article>
+          <article class="editorial-card"><img src="assets/editorial-4.png" alt="Escola de Oração"><div><strong>Escola de Oração</strong><span>Direção visual · Editoração</span></div></article>
+          <article class="editorial-card"><img src="assets/editorial-5.png" alt="Jejum"><div><strong>Jejum</strong><span>Projeto editorial</span></div></article>
+          <article class="editorial-card"><img src="assets/editorial-6.png" alt="Panorama Bíblico Novo Testamento"><div><strong>Panorama Bíblico — Novo Testamento</strong><span>Identidade editorial · Diagramação</span></div></article>
+        </div>
+      </div>
+    </section>
     <section id="sobre">
       <div class="wrap about">
         <p>Eu penso em sistemas, desenho experiências e construo coisas que precisam existir.</p>
