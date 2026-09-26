@@ -30,9 +30,7 @@
      .mark { display: inline-flex; align-items: center; }
     .mark img { display: block; width: 118px; height: auto; object-fit: contain; }
     .mark span { color: var(--accent); }
-    [data-theme="dark"] .mark .logo-light { display:none; }
-    .mark .logo-dark { display:none; }
-    [data-theme="dark"] .mark .logo-dark { display:block; }
+    [data-theme="dark"] .mark img { filter: brightness(0) invert(1); }
     [data-theme="dark"] .socials img { filter: grayscale(1) brightness(0) invert(1); }
     .links { display: flex; gap: 22px; color: var(--muted); font-size: 13px; font-weight: 600; }
     .links a:hover, .socials a:hover { color: var(--ink); }
@@ -124,7 +122,7 @@
 <body>
   <header class="wrap">
     <nav class="nav">
-      <a class="mark" href="#" aria-label="VM Lab"><img class="logo-light" src="https://raw.githubusercontent.com/viniciusmema/viniciusmema.github.io/main/assets/vm-lab-logo.png" alt="VM Lab"><img class="logo-dark" src="https://raw.githubusercontent.com/viniciusmema/viniciusmema.github.io/main/assets/vm-lab-logo-dark.png" alt="VM Lab"></a>
+      <a class="mark" href="#" aria-label="VM Lab"><img src="https://raw.githubusercontent.com/viniciusmema/viniciusmema.github.io/main/assets/vm-lab-logo.png" alt="VM Lab"></a>
       <div class="links">
         <a href="#projetos">Projetos</a>
         <a href="#sobre">Sobre</a>
