@@ -293,7 +293,9 @@
       }
     };
     let lang = localStorage.getItem("vm-language") || "pt";
-    let theme = localStorage.getItem("vm-theme") || "light";
+    const savedTheme = localStorage.getItem("vm-theme");
+    const systemTheme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    let theme = savedTheme || systemTheme;
     function applyTheme() { document.documentElement.dataset.theme = theme === "dark" ? "dark" : "light"; themeToggle.textContent = theme === "dark" ? "☀" : "☾"; themeToggle.setAttribute("aria-label", theme === "dark" ? "Usar tema claro" : "Usar tema escuro"); localStorage.setItem("vm-theme", theme); }
     function setText(selector, value) { const el = document.querySelector(selector); if (el) el.textContent = value; }
     function applyLanguage() {
