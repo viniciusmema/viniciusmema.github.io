@@ -303,7 +303,7 @@
       setText("#sobre > .wrap > p", t.aboutLead); document.querySelectorAll("#sobre aside p").forEach((el,i)=>el.textContent=t.about[i]);
       setText("#processo h2", t.processTitle); setText("#processo .section-head p", t.processIntro); document.querySelectorAll("#processo .service").forEach((el,i)=>{el.querySelector("strong").textContent=t.process[i][0];el.querySelector("p").textContent=t.process[i][1];});
       setText("#contato .eyebrow", t.contactEyebrow); setText("#contato h2", t.contactTitle); setText("#contato .contact-note", t.contactNote); setText("#contato .cta", t.contactCta + " ↗"); setText("footer span:last-child", t.footer);
-      langToggle.textContent = lang === "pt" ? "EN" : "PT"; localStorage.setItem("vm-language", lang);
+      langToggle.textContent = lang === "pt" ? "PT" : "EN"; localStorage.setItem("vm-language", lang);
     }
     langToggle.addEventListener("click", () => { lang = lang === "pt" ? "en" : "pt"; applyLanguage(); });
     applyLanguage();
