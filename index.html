@@ -99,7 +99,12 @@
       footer { display: block; }
       footer span { display: block; margin-top: 8px; }
     }
-  </style>
+      .project-logo-pair { display:flex; align-items:center; min-height:72px; margin-bottom:10px; }
+    .project-logo { max-width:180px; max-height:62px; width:auto; object-fit:contain; object-position:left center; }
+    .logo-dark { display:none; }
+    [data-theme="dark"] .logo-light { display:none; }
+    [data-theme="dark"] .logo-dark { display:block; }
+</style>
 </head>
 <body>
   <header class="wrap">
@@ -143,15 +148,15 @@
             <div class="project-foot"><span>React · Next.js · TypeScript</span><span class="arrow">↗</span></div>
           </article>
           <article class="project">
-            <div><span class="number">02 / plataforma</span><h3>Ide Scriptum</h3><p>Estudo bíblico, leitura, devocionais e organização reunidos em uma experiência centralizada.</p></div>
+            <div><div class="project-logo-pair"><img class="project-logo logo-light" src="assets/scriptum-light.png" alt="Ide Scriptum"><img class="project-logo logo-dark" src="assets/scriptum-dark.png" alt="Ide Scriptum"></div><span class="number">02 / plataforma</span><h3>Ide Scriptum</h3><p>Estudo bíblico, leitura, devocionais e organização reunidos em uma experiência centralizada.</p></div>
             <div class="project-foot"><span>React · Supabase · APIs</span><span class="arrow">↗</span></div>
           </article>
           <article class="project">
-            <div><span class="number">03 / e-commerce</span><h3>Casa Serenum</h3><p>Uma experiência de marca para casa, cama, mesa, banho e decoração.</p></div>
+            <div><div class="project-logo-pair"><img class="project-logo logo-light" src="assets/casa-serenum-light.png" alt="Casa Serenum"><img class="project-logo logo-dark" src="assets/casa-serenum-dark.png" alt="Casa Serenum"></div><span class="number">03 / e-commerce</span><h3>Casa Serenum</h3><p>Uma experiência de marca para casa, cama, mesa, banho e decoração.</p></div>
             <div class="project-foot"><a href="https://www.casaserenum.com.br">Visitar site ↗</a><span>Cloudflare · Yampi · Mercado Pago</span></div>
           </article>
           <article class="project">
-            <div><span class="number">04 / institucional</span><h3>Amar Transforma</h3><p>Presença digital e comunicação para uma comunidade em movimento.</p></div>
+            <div><div class="project-logo-pair"><img class="project-logo logo-light" src="assets/amar-transforma-light.png" alt="Amar Transforma"><img class="project-logo logo-dark" src="assets/amar-transforma-dark.png" alt="Amar Transforma"></div><span class="number">04 / institucional</span><h3>Amar Transforma</h3><p>Presença digital e comunicação para uma comunidade em movimento.</p></div>
             <div class="project-foot"><a href="https://amartransforma.com.br">Visitar site ↗</a><span>JavaScript · APIs</span></div>
           </article>
         </div>
@@ -313,6 +318,8 @@
       langToggle.textContent = lang === "pt" ? "PT" : "EN"; localStorage.setItem("vm-language", lang);
     }
     langToggle.addEventListener("click", () => { lang = lang === "pt" ? "en" : "pt"; applyLanguage(); });
+    themeToggle.addEventListener("click", () => { theme = theme === "dark" ? "light" : "dark"; applyTheme(); });
+    applyTheme();
     applyLanguage();
   </script>
 </body>
