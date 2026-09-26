@@ -216,11 +216,11 @@
 
     <section id="editorial">
       <div class="wrap">
-        <div class="section-head"><h2>Editorial &amp; Print</h2><p>Capas e páginas internas das publicações que desenvolvi do conceito à editoração.</p></div>
+        <div class="section-head"><h2>Editorial &amp; Print</h2><p data-pt="Capas e páginas internas das publicações que desenvolvi do conceito à editoração." data-en="Covers and interior pages from publications developed from concept to layout.">Capas e páginas internas das publicações que desenvolvi do conceito à editoração.</p></div>
         <div class="editorial-grid">
-          <article class="editorial-card"><div class="editorial-pair"><img src="assets/editorial-1.png" alt="Capa A História do Cristianismo"><img src="assets/editorial-page-1.png" alt="Página interna A História do Cristianismo"></div><div><strong>A História do Cristianismo</strong><span>Direção visual · Editoração</span></div></article>
-          <article class="editorial-card"><div class="editorial-pair"><img src="assets/editorial-2.png" alt="Capa A História do Cristianismo"><img src="assets/editorial-page-2.png" alt="Página interna A História do Cristianismo"></div><div><strong>A História do Cristianismo</strong><span>Projeto editorial</span></div></article>
-          <article class="editorial-card"><div class="editorial-pair"><img src="assets/editorial-3.png" alt="Capa Panorama Bíblico Antigo Testamento"><img src="assets/editorial-page-3.png" alt="Página interna Panorama Bíblico Antigo Testamento"></div><div><strong>Panorama Bíblico — Antigo Testamento</strong><span>Identidade editorial · Diagramação</span></div></article>
+          <article class="editorial-card"><div class="editorial-pair"><img src="assets/editorial-1.png" alt="Capa A História do Cristianismo"><img src="assets/editorial-page-1.png" alt="Página interna A História do Cristianismo"></div><div><strong>A História do Cristianismo</strong><span data-pt="Direção visual · Editoração" data-en="Art direction · Editorial design">Direção visual · Editoração</span></div></article>
+          <article class="editorial-card"><div class="editorial-pair"><img src="assets/editorial-2.png" alt="Capa A História do Cristianismo"><img src="assets/editorial-page-2.png" alt="Página interna A História do Cristianismo"></div><div><strong>A História do Cristianismo</strong><span data-pt="Projeto editorial" data-en="Editorial project">Projeto editorial</span></div></article>
+          <article class="editorial-card"><div class="editorial-pair"><img src="assets/editorial-3.png" alt="Capa Panorama Bíblico Antigo Testamento"><img src="assets/editorial-page-3.png" alt="Página interna Panorama Bíblico Antigo Testamento"></div><div><strong>Panorama Bíblico — Antigo Testamento</strong><span data-pt="Identidade editorial · Diagramação" data-en="Editorial identity · Layout">Identidade editorial · Diagramação</span></div></article>
           <article class="editorial-card"><div class="editorial-pair"><img src="assets/editorial-4.png" alt="Capa Escola de Oração"><img src="assets/editorial-page-4.png" alt="Página interna Escola de Oração"></div><div><strong>Escola de Oração</strong><span>Direção visual · Editoração</span></div></article>
           <article class="editorial-card"><div class="editorial-pair"><img src="assets/editorial-5.png" alt="Capa Jejum"><img src="assets/editorial-page-5.png" alt="Página interna Jejum"></div><div><strong>Jejum</strong><span>Projeto editorial</span></div></article>
           <article class="editorial-card"><div class="editorial-pair"><img src="assets/editorial-6.png" alt="Capa Panorama Bíblico Novo Testamento"><img src="assets/editorial-page-6.png" alt="Página interna Panorama Bíblico Novo Testamento"></div><div><strong>Panorama Bíblico — Novo Testamento</strong><span>Identidade editorial · Diagramação</span></div></article>
@@ -356,6 +356,7 @@
     function setText(selector, value) { const el = document.querySelector(selector); if (el) el.textContent = value; }
     function applyLanguage() {
       const t = copy[lang];
+      document.querySelectorAll("[data-pt]").forEach(el => { el.textContent = el.dataset[lang] || el.dataset.pt; });
       document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
       document.querySelectorAll(".links a").forEach((el, i) => el.textContent = t.nav[i]);
       setText(".hero .eyebrow", t.heroEyebrow); setText(".hero h1", t.heroTitle); setText(".hero-copy", t.heroCopy); setText(".hero .cta", t.heroCta + " ↘");
