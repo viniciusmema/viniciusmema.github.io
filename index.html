@@ -353,6 +353,7 @@
     function applyLanguage() {
       const t = copy[lang];
       document.querySelectorAll("[data-pt]").forEach(el => { el.textContent = el.dataset[lang] || el.dataset.pt; });
+      document.querySelectorAll(".book-carousel").forEach(el => el._updateLanguage && el._updateLanguage());
       document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
       document.querySelectorAll(".links a").forEach((el, i) => el.textContent = t.nav[i]);
       setText(".hero .eyebrow", t.heroEyebrow); setText(".hero h1", t.heroTitle); setText(".hero-copy", t.heroCopy); setText(".hero .cta", t.heroCta + " ↘");
@@ -365,7 +366,7 @@
       setText("#contato .eyebrow", t.contactEyebrow); setText("#contato h2", t.contactTitle); setText("#contato .contact-note", t.contactNote); setText("#contato .cta", t.contactCta + " ↗"); setText("footer span:last-child", t.footer);
       langToggle.textContent = lang === "pt" ? "PT" : "EN"; localStorage.setItem("vm-language", lang);
     }
-    document.querySelectorAll(".book-carousel").forEach(carousel => { const pages=carousel.dataset.pages.split("|"); let index=0; const image=carousel.querySelector(".book-page"); const count=carousel.querySelector(".book-count"); const update=()=>{ image.src=pages[index]; count.textContent=(index===0?"Capa":`Página ${index}`)+` · ${index}/${pages.length-1}`; }; carousel.querySelector(".book-prev").addEventListener("click",()=>{index=(index-1+pages.length)%pages.length;update();}); carousel.querySelector(".book-next").addEventListener("click",()=>{index=(index+1)%pages.length;update();}); });
+    document.querySelectorAll(".book-carousel").forEach(carousel => { const pages=carousel.dataset.pages.split("|"); let index=0; const image=carousel.querySelector(".book-page"); const count=carousel.querySelector(".book-count"); const prev=carousel.querySelector(".book-prev"); const next=carousel.querySelector(".book-next"); const update=()=>{ image.src=pages[index]; const labels=lang==="pt"?{cover:"Capa",page:"Página",prev:"Página anterior",next:"Próxima página"}:{cover:"Cover",page:"Page",prev:"Previous page",next:"Next page"}; count.textContent=(index===0?labels.cover:`${labels.page} ${index}`)+` · ${index}/${pages.length-1}`; prev.setAttribute("aria-label",labels.prev); next.setAttribute("aria-label",labels.next); }; prev.addEventListener("click",()=>{index=(index-1+pages.length)%pages.length;update();}); next.addEventListener("click",()=>{index=(index+1)%pages.length;update();}); carousel._updateLanguage=update; update(); });
     langToggle.addEventListener("click", () => { lang = lang === "pt" ? "en" : "pt"; applyLanguage(); nav.classList.remove("open"); menu.setAttribute("aria-expanded", "false"); });
     themeToggle.addEventListener("click", () => { theme = theme === "dark" ? "light" : "dark"; applyTheme(); });
     applyTheme();
