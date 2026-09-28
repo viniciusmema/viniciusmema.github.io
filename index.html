@@ -279,7 +279,7 @@
     const menu = document.querySelector(".menu");
     const langToggle = document.querySelector(".lang-toggle");
     const themeToggle = document.querySelector(".theme-toggle");
-    menu.addEventListener("click", () => { const isOpen = nav.classList.toggle("open"); menu.setAttribute("aria-expanded", String(isOpen)); });
+    menu.addEventListener("click", () => { const isOpen = nav.classList.toggle("open"); menu.setAttribute("aria-expanded", String(isOpen)); menu.setAttribute("aria-label", isOpen ? (lang === "pt" ? "Fechar menu" : "Close menu") : (lang === "pt" ? "Abrir menu" : "Open menu")); });
     nav.querySelectorAll("a").forEach(link => link.addEventListener("click", () => { nav.classList.remove("open"); menu.setAttribute("aria-expanded", "false"); }));
 
     const copy = {
@@ -314,7 +314,9 @@
         contactTitle: "Uma boa ideia merece uma experiência à altura.",
         contactNote: "Crio identidades visuais, sites e produtos digitais para marcas e projetos.",
         contactCta: "Falar comigo",
-        footer: "Design · Tecnologia · Desenvolvimento"
+        footer: "Design · Tecnologia · Desenvolvimento",
+        pageTitle: "Vinicius Mendes Maia — Creative Technologist",
+        pageDescription: "Portfólio de Vinicius Mendes Maia — Creative Technologist & Digital Product Designer."
       },
       en: {
         nav: ["Projects","About","Focus","Process","Contact"],
@@ -347,7 +349,9 @@
         contactTitle: "A good idea deserves an experience to match.",
         contactNote: "I create visual identities, websites and digital products for brands and projects.",
         contactCta: "Get in touch",
-        footer: "Design · Technology · Development"
+        footer: "Design · Technology · Development",
+        pageTitle: "Vinicius Mendes Maia — Creative Technologist",
+        pageDescription: "Portfolio of Vinicius Mendes Maia — Creative Technologist & Digital Product Designer."
       }
     };
     const browserLanguage = (navigator.language || "pt-BR").toLowerCase();
@@ -363,6 +367,12 @@
       document.querySelectorAll("[data-pt]").forEach(el => { el.textContent = el.dataset[lang] || el.dataset.pt; });
       document.querySelectorAll(".book-carousel").forEach(el => el._updateLanguage && el._updateLanguage());
       document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+      document.title = t.pageTitle;
+      const description = document.querySelector('meta[name="description"]');
+      if (description) description.setAttribute("content", t.pageDescription);
+      langToggle.setAttribute("aria-label", lang === "pt" ? "Trocar idioma" : "Change language");
+      themeToggle.setAttribute("aria-label", theme === "dark" ? (lang === "pt" ? "Usar tema claro" : "Use light theme") : (lang === "pt" ? "Usar tema escuro" : "Use dark theme"));
+      menu.setAttribute("aria-label", nav.classList.contains("open") ? (lang === "pt" ? "Fechar menu" : "Close menu") : (lang === "pt" ? "Abrir menu" : "Open menu"));
       document.querySelectorAll(".links a").forEach((el, i) => el.textContent = t.nav[i]);
       setText(".hero .eyebrow", t.heroEyebrow); setText(".hero h1", t.heroTitle); setText(".hero-copy", t.heroCopy); setText(".hero .cta", t.heroCta + " ↘");
       setText("#projetos h2", t.projectsTitle); setText("#projetos .section-head p", t.projectsIntro);
