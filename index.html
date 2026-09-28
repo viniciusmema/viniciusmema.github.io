@@ -121,10 +121,10 @@
       .nav.open { border-radius: 20px; flex-wrap: wrap; }
       .nav.open .links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); flex-basis: 100%; order: 4; gap: 10px 16px; padding-top: 12px; border-top: 1px solid var(--line); }
       .nav.open > .socials { display: flex; flex-basis: auto; justify-content: flex-end; margin-left: auto; padding-top: 0; }
-      .nav { top: 8px; margin-top: 8px; padding: 10px 12px; gap: 8px; flex-wrap: nowrap; }
+      .nav { top: 8px; margin-top: 8px; padding: 10px 12px; gap: 6px; flex-wrap: nowrap; justify-content: flex-start; }
       @media (max-width: 430px) {
         .nav { width: calc(100vw - 20px); max-width: calc(100vw - 20px); overflow: hidden; flex-wrap: wrap; }
-        .mark { min-width: 0; }
+        .mark { min-width: 0; margin-right: auto; }
         .mark img { width: 86px; }
         .socials { min-width: 0; flex-wrap: nowrap; }
         .socials { flex-basis: 100%; justify-content: center; order: 5; padding-top: 8px; border-top: 1px solid var(--line); }
