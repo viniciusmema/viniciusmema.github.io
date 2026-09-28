@@ -280,7 +280,7 @@
     const langToggle = document.querySelector(".lang-toggle");
     const themeToggle = document.querySelector(".theme-toggle");
     menu.addEventListener("click", () => { const isOpen = nav.classList.toggle("open"); menu.setAttribute("aria-expanded", String(isOpen)); menu.setAttribute("aria-label", isOpen ? (lang === "pt" ? "Fechar menu" : "Close menu") : (lang === "pt" ? "Abrir menu" : "Open menu")); });
-    nav.querySelectorAll("a").forEach(link => link.addEventListener("click", () => { nav.classList.remove("open"); menu.setAttribute("aria-expanded", "false"); }));
+    nav.querySelectorAll("a").forEach(link => link.addEventListener("click", () => { nav.classList.remove("open"); menu.setAttribute("aria-expanded", "false"); menu.setAttribute("aria-label", lang === "pt" ? "Abrir menu" : "Open menu"); }));
 
     const copy = {
       pt: {
@@ -385,7 +385,7 @@
       langToggle.textContent = lang === "pt" ? "PT" : "EN"; localStorage.setItem("vm-language", lang);
     }
     document.querySelectorAll(".book-carousel").forEach(carousel => { const pages=carousel.dataset.pages.split("|"); let index=0; const image=carousel.querySelector(".book-page"); const count=carousel.querySelector(".book-count"); const prev=carousel.querySelector(".book-prev"); const next=carousel.querySelector(".book-next"); const update=()=>{ image.src=pages[index]; const labels=lang==="pt"?{cover:"Capa",page:"Página",prev:"Página anterior",next:"Próxima página"}:{cover:"Cover",page:"Page",prev:"Previous page",next:"Next page"}; count.textContent=(index===0?labels.cover:`${labels.page} ${index}`)+` · ${index}/${pages.length-1}`; prev.setAttribute("aria-label",labels.prev); next.setAttribute("aria-label",labels.next); }; prev.addEventListener("click",()=>{index=(index-1+pages.length)%pages.length;update();}); next.addEventListener("click",()=>{index=(index+1)%pages.length;update();}); carousel._updateLanguage=update; update(); });
-    langToggle.addEventListener("click", () => { lang = lang === "pt" ? "en" : "pt"; applyLanguage(); nav.classList.remove("open"); menu.setAttribute("aria-expanded", "false"); });
+    langToggle.addEventListener("click", () => { lang = lang === "pt" ? "en" : "pt"; applyLanguage(); nav.classList.remove("open"); menu.setAttribute("aria-expanded", "false"); menu.setAttribute("aria-label", lang === "pt" ? "Abrir menu" : "Open menu"); });
     themeToggle.addEventListener("click", () => { theme = theme === "dark" ? "light" : "dark"; applyTheme(); });
     applyTheme();
     applyLanguage();
